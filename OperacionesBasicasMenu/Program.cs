@@ -74,6 +74,7 @@ namespace OperacionesBasicasMenu
                             {
                                 Console.WriteLine("No se pueden dividir números entre cero");
                             }
+                        
                     }
 
                 }
