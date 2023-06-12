@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace OperacionesBasicasMenu
     {
         static void Main(string[] args)
         {
-            decimal num1, num2, resultado= 0.0M;
+            decimal num1, num2, resultado = 0.0M;
             byte opcion;
 
             // Desplegamos el Menu
@@ -32,53 +33,51 @@ namespace OperacionesBasicasMenu
             // indicamos al usuario ungrear el primer valor
             Console.Write("Por favor ingresa el segundo numero:  ");
             num2 = Convert.ToDecimal(Console.ReadLine());
-            
-            
+
+
 
             //Suma
             if (opcion == 1)
             {
                 resultado = num1 + num2;
             }
-            //Resta
-            if (opcion == 2)
+            else
             {
-                resultado = num1 - num2;
-            }
-            //Multiplicacion
-            if(opcion == 3)
-            {
-                resultado = num1 * num2;
-            }
-            //Division
-            if ((opcion == 4))
-            {
-                try
+                //Resta
+                if (opcion == 2)
                 {
-                    resultado = num1 / num2;
-
-                    if (num1 == 0 || num2 == 0)
+                    resultado = num1 - num2;
+                }
+                else
+                {
+                    if (opcion == 3)
                     {
-                        Console.WriteLine("No se pueden dividir números entre cero");
+                        resultado = num1 - num2;
                     }
                     else
                     {
-                        Console.WriteLine("El resultado es {0}", resultado);
+                        if (opcion == 4)
+                            try
+                            {
+                                resultado = num1 / num2;
+
+                                if (num1 == 0 || num2 == 0)
+                                {
+                                    Console.WriteLine("No se pueden dividir números entre cero");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("El resultado es {0}", resultado);
+                                }
+                            }
+                            catch (DivideByZeroException)
+                            {
+                                Console.WriteLine("No se pueden dividir números entre cero");
+                            }
                     }
+
                 }
-                catch (DivideByZeroException)
-                {
-                    Console.WriteLine("No se pueden dividir números entre cero");
-                }
-
-
-
-
             }
-
-
-
-
         }
     }
 }
